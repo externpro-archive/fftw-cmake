@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.8.7)
+project(fftw)
+set(fftwroot ${fftw_SOURCE_DIR}/..)
+get_filename_component(fftwroot ${fftwroot} ABSOLUTE)
+include(config.h.cmake)
+set(lib_name libfftw)
+include(libfftw.cmake)

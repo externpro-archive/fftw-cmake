@@ -1,4 +1,20 @@
 #######################################
+# additional include directories
+include_directories(
+  ${CMAKE_BINARY_DIR} # for config.h
+  ${fftwroot}/api
+  ${fftwroot}/dft
+  ${fftwroot}/dft/scalar
+  ${fftwroot}/dft/simd
+  ${fftwroot}/kernel
+  ${fftwroot}/rdft
+  ${fftwroot}/rdft/scalar
+  ${fftwroot}/rdft/simd
+  ${fftwroot}/reodft
+  ${fftwroot}/simd-support
+  ${fftwroot}/threads
+  )
+#######################################
 # library sources
 ########################
 # api
@@ -69,7 +85,7 @@ set(api_srcs
   ${fftwroot}/api/the-planner.c
   ${fftwroot}/api/version.c
   )
-source_group(api FILES ${api_srcs})
+source_group("Source Files\\api" FILES ${api_srcs})
 list(APPEND ${lib_name}_libsrcs ${api_srcs})
 ########################
 # dft
@@ -99,14 +115,14 @@ set(dft_srcs
   ${fftwroot}/dft/vrank-geq1.c
   ${fftwroot}/dft/zero.c
   )
-source_group(dft FILES ${dft_srcs})
+source_group("Source Files\\dft" FILES ${dft_srcs})
 list(APPEND ${lib_name}_libsrcs ${dft_srcs})
 #####
 set(dft_scalar_srcs
   ${fftwroot}/dft/scalar/n.c
   ${fftwroot}/dft/scalar/t.c
   )
-source_group(dft\\scalar FILES ${dft_scalar_srcs})
+source_group("Source Files\\dft\\scalar" FILES ${dft_scalar_srcs})
 list(APPEND ${lib_name}_libsrcs ${dft_scalar_srcs})
 #####
 set(dft_scalar_codelets_srcs
@@ -162,7 +178,7 @@ set(dft_scalar_codelets_srcs
   ${fftwroot}/dft/scalar/codelets/t2_64.c
   ${fftwroot}/dft/scalar/codelets/t2_8.c
   )
-source_group(dft\\scalar\\codelets FILES ${dft_scalar_codelets_srcs})
+source_group("Source Files\\dft\\scalar\\codelets" FILES ${dft_scalar_codelets_srcs})
 list(APPEND ${lib_name}_libsrcs ${dft_scalar_codelets_srcs})
 #####
 set(dft_simd_sse2_srcs
@@ -339,7 +355,7 @@ set(dft_simd_sse2_srcs
   ${fftwroot}/dft/simd/sse2/t3fv_5.c
   ${fftwroot}/dft/simd/sse2/t3fv_8.c
   )
-source_group(dft\\simd\\sse2 FILES ${dft_simd_sse2_srcs})
+source_group("Source Files\\dft\\simd\\sse2" FILES ${dft_simd_sse2_srcs})
 list(APPEND ${lib_name}_libsrcs ${dft_simd_sse2_srcs})
 ########################
 # kernel
@@ -388,7 +404,7 @@ set(kernel_srcs
   ${fftwroot}/kernel/trig.c
   ${fftwroot}/kernel/twiddle.c
   )
-source_group(kernel FILES ${kernel_srcs})
+source_group("Source Files\\kernel" FILES ${kernel_srcs})
 list(APPEND ${lib_name}_libsrcs ${kernel_srcs})
 ########################
 # rdft
@@ -434,7 +450,7 @@ set(rdft_srcs
   ${fftwroot}/rdft/vrank-geq1.c
   ${fftwroot}/rdft/vrank-geq1-rdft2.c
   )
-source_group(rdft FILES ${rdft_srcs})
+source_group("Source Files\\rdft" FILES ${rdft_srcs})
 list(APPEND ${lib_name}_libsrcs ${rdft_srcs})
 #####
 set(rdft_scalar_srcs
@@ -443,7 +459,7 @@ set(rdft_scalar_srcs
   ${fftwroot}/rdft/scalar/r2c.c
   ${fftwroot}/rdft/scalar/r2r.c
   )
-source_group(rdft\\scalar FILES ${rdft_scalar_srcs})
+source_group("Source Files\\rdft\\scalar" FILES ${rdft_scalar_srcs})
 list(APPEND ${lib_name}_libsrcs ${rdft_scalar_srcs})
 #####
 set(rdft_scalar_r2cb_srcs
@@ -536,7 +552,7 @@ set(rdft_scalar_r2cb_srcs
   ${fftwroot}/rdft/scalar/r2cb/r2cbIII_8.c
   ${fftwroot}/rdft/scalar/r2cb/r2cbIII_9.c
   )
-source_group(rdft\\scalar\\r2cb FILES ${rdft_scalar_r2cb_srcs})
+source_group("Source Files\\rdft\\scalar\\r2cb" FILES ${rdft_scalar_r2cb_srcs})
 list(APPEND ${lib_name}_libsrcs ${rdft_scalar_r2cb_srcs})
 #####
 set(rdft_scalar_r2cf_srcs
@@ -629,7 +645,7 @@ set(rdft_scalar_r2cf_srcs
   ${fftwroot}/rdft/scalar/r2cf/r2cfII_8.c
   ${fftwroot}/rdft/scalar/r2cf/r2cfII_9.c
   )
-source_group(rdft\\scalar\\r2cf FILES ${rdft_scalar_r2cf_srcs})
+source_group("Source Files\\rdft\\scalar\\r2cf" FILES ${rdft_scalar_r2cf_srcs})
 list(APPEND ${lib_name}_libsrcs ${rdft_scalar_r2cf_srcs})
 #####
 set(rdft_scalar_r2r_srcs
@@ -637,7 +653,7 @@ set(rdft_scalar_r2r_srcs
   ${fftwroot}/rdft/scalar/r2r/e01_8.c
   ${fftwroot}/rdft/scalar/r2r/e10_8.c
   )
-source_group(rdft\\scalar\\r2r FILES ${rdft_scalar_r2r_srcs})
+source_group("Source Files\\rdft\\scalar\\r2r" FILES ${rdft_scalar_r2r_srcs})
 list(APPEND ${lib_name}_libsrcs ${rdft_scalar_r2r_srcs})
 #####
 set(rdft_simd_sse2_srcs
@@ -662,7 +678,7 @@ set(rdft_simd_sse2_srcs
   ${fftwroot}/rdft/simd/sse2/hc2cfdftv_6.c
   ${fftwroot}/rdft/simd/sse2/hc2cfdftv_8.c
   )
-source_group(rdft\\simd\\sse2 FILES ${rdft_simd_sse2_srcs})
+source_group("Source Files\\rdft\\simd\\sse2" FILES ${rdft_simd_sse2_srcs})
 list(APPEND ${lib_name}_libsrcs ${rdft_simd_sse2_srcs})
 ########################
 # reodft
@@ -678,7 +694,7 @@ set(reodft_srcs
   ${fftwroot}/reodft/rodft00e-r2hc.c
   ${fftwroot}/reodft/rodft00e-r2hc-pad.c
   )
-source_group(reodft FILES ${reodft_srcs})
+source_group("Source Files\\reodft" FILES ${reodft_srcs})
 list(APPEND ${lib_name}_libsrcs ${reodft_srcs})
 ########################
 # simd-support
@@ -687,7 +703,7 @@ set(simdsupport_srcs
   ${fftwroot}/simd-support/sse2-nonportable.c
   ${fftwroot}/simd-support/taint.c
   )
-source_group(simd-support FILES ${simdsupport_srcs})
+source_group("Source Files\\simd-support" FILES ${simdsupport_srcs})
 list(APPEND ${lib_name}_libsrcs ${simdsupport_srcs})
 ########################
 # threads
@@ -703,6 +719,8 @@ set(threads_src
   #${fftwroot}/threads/threads.c
   ${fftwroot}/threads/vrank-geq1-rdft2.c
   )
-source_group(threads FILES ${threads_srcs})
+source_group("Source Files\\threads" FILES ${threads_srcs})
 list(APPEND ${lib_name}_libsrcs ${threads_srcs})
-
+#######################################
+# library
+add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
