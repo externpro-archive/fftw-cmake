@@ -1,7 +1,6 @@
 #######################################
 # additional include directories
 include_directories(
-  ${CMAKE_BINARY_DIR} # for config.h
   ${fftwroot}/api
   ${fftwroot}/dft
   ${fftwroot}/dft/scalar
@@ -16,6 +15,13 @@ include_directories(
   )
 #######################################
 # library sources
+set(cmake_srcs
+  ${fftwroot}/cmake/libfftw.cmake
+  ${fftwroot}/cmake/config.h.cmake
+  ${fftwroot}/cmake/config.h.in
+  )
+source_group(cmake FILES ${cmake_srcs})
+list(APPEND ${lib_name}_libsrcs ${cmake_srcs})
 ########################
 # api
 set(api_srcs
@@ -356,7 +362,9 @@ set(dft_simd_sse2_srcs
   ${fftwroot}/dft/simd/sse2/t3fv_8.c
   )
 source_group("Source Files\\dft\\simd\\sse2" FILES ${dft_simd_sse2_srcs})
-list(APPEND ${lib_name}_libsrcs ${dft_simd_sse2_srcs})
+if(HAVE_SSE2)
+  list(APPEND ${lib_name}_libsrcs ${dft_simd_sse2_srcs})
+endif()
 ########################
 # kernel
 set(kernel_srcs
@@ -679,7 +687,9 @@ set(rdft_simd_sse2_srcs
   ${fftwroot}/rdft/simd/sse2/hc2cfdftv_8.c
   )
 source_group("Source Files\\rdft\\simd\\sse2" FILES ${rdft_simd_sse2_srcs})
-list(APPEND ${lib_name}_libsrcs ${rdft_simd_sse2_srcs})
+if(HAVE_SSE2)
+  list(APPEND ${lib_name}_libsrcs ${rdft_simd_sse2_srcs})
+endif()
 ########################
 # reodft
 set(reodft_srcs
@@ -704,7 +714,9 @@ set(simdsupport_srcs
   ${fftwroot}/simd-support/taint.c
   )
 source_group("Source Files\\simd-support" FILES ${simdsupport_srcs})
-list(APPEND ${lib_name}_libsrcs ${simdsupport_srcs})
+if(HAVE_SSE2)
+  list(APPEND ${lib_name}_libsrcs ${simdsupport_srcs})
+endif()
 ########################
 # threads
 set(threads_src
