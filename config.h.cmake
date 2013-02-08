@@ -50,6 +50,10 @@ CHECK_FUNCTION_EXISTS(memset HAVE_MEMSET)
 # HAVE_NEON
 include(FindOpenMP)
 set(HAVE_OPENMP OPENMP_FOUND)
+if(OPENMP_FOUND)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+endif()
 #CHECK_FUNCTION_EXISTS(posix_memalign HAVE_POSIX_MEMALIGN)
 # HAVE_PTHREAD
 # HAVE_READ_REAL_TEIM
@@ -141,3 +145,4 @@ if(NOT DEFINED C_INLINE)
   endif()
 endif(NOT DEFINED C_INLINE)
 set(inline ${C_INLINE_KEYWORD})
+configure_file(config.h.in ${lib_dir}/config.h)
