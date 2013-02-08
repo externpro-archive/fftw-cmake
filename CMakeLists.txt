@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.7)
 project(fftw)
+include(flags OPTIONAL)
 set(VER_MAJ 3)
 set(VER_MIN 3)
 set(VER_PT 3)
