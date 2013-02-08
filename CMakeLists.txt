@@ -8,6 +8,7 @@ get_filename_component(fftwroot ${fftwroot} ABSOLUTE)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON) # enables MSVC Solution Folders
 if(MSVC)
   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+  add_definitions(/Oi) # enable intrinsic functions
 endif()
 set(precisions double float long-double)
 foreach(prec ${precisions})
