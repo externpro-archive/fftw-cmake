@@ -1,4 +1,10 @@
 #######################################
+# executable dependencies and libraries
+list(APPEND ${exe_name}_deps ${lib_name})
+if(UNIX)
+  list(APPEND ${exe_name}_deps m) # math library
+endif()
+#######################################
 # executable sources
 set(cmake_srcs
   ${fftwroot}/cmake/bench.cmake
@@ -19,8 +25,8 @@ list(APPEND ${exe_name}_srcs ${libbench2_srcs})
 #######################################
 # executable
 add_executable(${exe_name} ${${exe_name}_srcs})
-add_dependencies(${exe_name} ${lib_name})
-target_link_libraries(${exe_name} ${lib_name})
+add_dependencies(${exe_name} ${${exe_name}_deps})
+target_link_libraries(${exe_name} ${${exe_name}_deps})
 set_property(TARGET ${exe_name} PROPERTY INCLUDE_DIRECTORIES
   ${lib_dir}
   ${fftwroot}/api
@@ -30,3 +36,4 @@ set_property(TARGET ${exe_name} PROPERTY INCLUDE_DIRECTORIES
   ${fftwroot}/libbench2
   )
 set_property(TARGET ${exe_name} PROPERTY FOLDER "bench")
+master_src_list_append(${CMAKE_CURRENT_SOURCE_DIR} "${${exe_name}_srcs}")
