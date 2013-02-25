@@ -73,7 +73,7 @@
 /* Define to 1 if you have <alloca.h> and it should be used (not on Ultrix).
    */
 /* Inconsistent in code: used with #ifdef and #if */
-#cmakedefine01 HAVE_ALLOCA_H
+#cmakedefine HAVE_ALLOCA_H
 
 /* Define (to 1!) to enable Altivec optimizations. */
 /* Inconsistent in code: used with #ifdef and #if */
@@ -255,7 +255,7 @@
 
 /* Define to 1 if you have the <sys/time.h> header file. */
 /* Inconsistent in code: used with #ifdef and #if */
-#cmakedefine01 HAVE_SYS_TIME_H
+#cmakedefine HAVE_SYS_TIME_H
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #cmakedefine01 HAVE_SYS_TYPES_H
