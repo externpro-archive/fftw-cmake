@@ -32,7 +32,7 @@ add_executable(${exe_name} ${${exe_name}_srcs})
 add_dependencies(${exe_name} ${${exe_name}_deps})
 target_link_libraries(${exe_name} ${${exe_name}_deps})
 set_property(TARGET ${exe_name} PROPERTY INCLUDE_DIRECTORIES
-  ${lib_dir}
+  ${cfg_dir}
   ${fftwroot}/api
   ${fftwroot}/dft
   ${fftwroot}/kernel

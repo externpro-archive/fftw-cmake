@@ -1,7 +1,7 @@
 #######################################
 # library sources
-source_group("Header Files" FILES ${lib_dir}/config.h)
-list(APPEND ${lib_name}_libsrcs ${lib_dir}/config.h)
+source_group("Header Files" FILES ${cfg_dir}/config.h)
+list(APPEND ${lib_name}_libsrcs ${cfg_dir}/config.h)
 set(cmake_srcs
   ${fftwroot}/cmake/libfftw.cmake
   ${fftwroot}/cmake/config.h.cmake
@@ -111,7 +111,7 @@ list(APPEND ${lib_name}_libsrcs ${threads_srcs} ${threads_hdrs})
 # library
 add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
 set_property(TARGET ${lib_name} PROPERTY INCLUDE_DIRECTORIES
-  ${lib_dir}
+  ${cfg_dir}
   ${fftwroot}/api
   ${fftwroot}/dft
   ${fftwroot}/dft/scalar

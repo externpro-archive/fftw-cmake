@@ -209,4 +209,4 @@ if(NOT DEFINED C_INLINE)
 endif(NOT DEFINED C_INLINE)
 set(inline ${C_INLINE_KEYWORD})
 # size_t
-configure_file(${fftwroot}/cmake/config.h.in ${lib_dir}/config.h)
+configure_file(${fftwroot}/cmake/config.h.in ${cfg_dir}/config.h)
