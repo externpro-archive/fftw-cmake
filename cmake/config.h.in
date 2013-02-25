@@ -15,10 +15,10 @@
 #cmakedefine CRAY_STACKSEG_END
 
 /* Define to 1 if using `alloca.c'. */
-#cmakedefine C_ALLOCA
+#cmakedefine01 C_ALLOCA
 
 /* Define to disable Fortran wrappers. */
-#cmakedefine01 DISABLE_FORTRAN
+#cmakedefine DISABLE_FORTRAN
 
 /* Define to dummy `main' function (if any) required to link to the Fortran
    libraries. */
@@ -50,7 +50,7 @@
 #cmakedefine FFTW_DEBUG_MALLOC
 
 /* Define to enable the use of alloca(). */
-#undef FFTW_ENABLE_ALLOCA
+#cmakedefine FFTW_ENABLE_ALLOCA
 
 /* Define to compile in long-double precision. */
 #cmakedefine FFTW_LDOUBLE
@@ -78,22 +78,22 @@
 #cmakedefine HAVE_ALTIVEC
 
 /* Define to 1 if you have the <altivec.h> header file. */
-#cmakedefine HAVE_ALTIVEC_H
+#cmakedefine01 HAVE_ALTIVEC_H
 
 /* Define to enable AVX optimizations. */
-#undef HAVE_AVX
+#cmakedefine HAVE_AVX
 
 /* Define to 1 if you have the `BSDgettimeofday' function. */
-#cmakedefine HAVE_BSDGETTIMEOFDAY
+#cmakedefine01 HAVE_BSDGETTIMEOFDAY
 
 /* Define to 1 if you have the `clock_gettime' function. */
-#cmakedefine HAVE_CLOCK_GETTIME
+#cmakedefine01 HAVE_CLOCK_GETTIME
 
 /* Define to 1 if you have the `cosl' function. */
 #cmakedefine01 HAVE_COSL
 
 /* Define to 1 if you have the <c_asm.h> header file. */
-#cmakedefine HAVE_C_ASM_H
+#cmakedefine01 HAVE_C_ASM_H
 
 /* Define to 1 if you have the declaration of `cosl', and to 0 if you don't.
    */
@@ -131,7 +131,7 @@
 #cmakedefine01 HAVE_DLFCN_H
 
 /* Define to 1 if you don't have `vprintf' but do have `_doprnt.' */
-#cmakedefine HAVE_DOPRNT
+#cmakedefine01 HAVE_DOPRNT
 
 /* Define to 1 if you have the `drand48' function. */
 #cmakedefine01 HAVE_DRAND48
@@ -140,22 +140,24 @@
 #cmakedefine HAVE_FMA
 
 /* Define to 1 if you have the `gethrtime' function. */
+/* Defining to 0, if not true, doesn't work! Must be cmakedefine */
 #cmakedefine HAVE_GETHRTIME
 
 /* Define to 1 if you have the `gettimeofday' function. */
 #cmakedefine01 HAVE_GETTIMEOFDAY
 
 /* Define to 1 if hrtime_t is defined in <sys/time.h> */
+/* Defining to 0, if not true, doesn't work! Must be cmakedefine */
 #cmakedefine HAVE_HRTIME_T
 
 /* Define to 1 if you have the <intrinsics.h> header file. */
-#cmakedefine HAVE_INTRINSICS_H
+#cmakedefine01 HAVE_INTRINSICS_H
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #cmakedefine01 HAVE_INTTYPES_H
 
 /* Define if the isnan() function/macro is available. */
-#cmakedefine01 HAVE_ISNAN
+#cmakedefine HAVE_ISNAN
 
 /* Define to 1 if you have the <libintl.h> header file. */
 #cmakedefine01 HAVE_LIBINTL_H
@@ -164,7 +166,7 @@
 #cmakedefine01 HAVE_LIBM
 
 /* Define to 1 if you have the `quadmath' library (-lquadmath). */
-#cmakedefine HAVE_LIBQUADMATH
+#cmakedefine01 HAVE_LIBQUADMATH
 
 /* Define to 1 if you have the <limits.h> header file. */
 #cmakedefine01 HAVE_LIMITS_H
@@ -173,9 +175,11 @@
 #cmakedefine01 HAVE_LONG_DOUBLE
 
 /* Define to 1 if you have the `mach_absolute_time' function. */
+/* Defining to 0, if not true, doesn't work! Must be cmakedefine */
 #cmakedefine HAVE_MACH_ABSOLUTE_TIME
 
 /* Define to 1 if you have the <mach/mach_time.h> header file. */
+/* Defining to 0, if not true, doesn't work! Must be cmakedefine */
 #cmakedefine HAVE_MACH_MACH_TIME_H
 
 /* Define to 1 if you have the <malloc.h> header file. */
@@ -200,7 +204,7 @@
 #cmakedefine HAVE_NEON
 
 /* Define if OpenMP is enabled */
-#cmakedefine01 HAVE_OPENMP
+#cmakedefine HAVE_OPENMP
 
 /* Define to 1 if you have the `posix_memalign' function. */
 #cmakedefine01 HAVE_POSIX_MEMALIGN
@@ -209,6 +213,7 @@
 #cmakedefine HAVE_PTHREAD
 
 /* Define to 1 if you have the `read_real_time' function. */
+/* Defining to 0, if not true, doesn't work! Must be cmakedefine */
 #cmakedefine HAVE_READ_REAL_TIME
 
 /* Define to 1 if you have the `sinl' function. */
@@ -220,7 +225,7 @@
 /* Define to 1 if you have the `sqrt' function. */
 #cmakedefine01 HAVE_SQRT
 
-/* Define to enable SSE/SSE2 optimizations. */
+/* Define (to 1!) to enable SSE/SSE2 optimizations. */
 #cmakedefine01 HAVE_SSE2
 
 /* Define to 1 if you have the <stddef.h> header file. */
@@ -254,12 +259,13 @@
 #cmakedefine01 HAVE_SYS_TYPES_H
 
 /* Define to 1 if you have the `tanl' function. */
-#cmakedefine HAVE_TANL
+#cmakedefine01 HAVE_TANL
 
 /* Define if we have a threads library. */
 #cmakedefine HAVE_THREADS
 
 /* Define to 1 if you have the `time_base_to_time' function. */
+/* Defining to 0, if not true, doesn't work! Must be cmakedefine */
 #cmakedefine HAVE_TIME_BASE_TO_TIME
 
 /* Define to 1 if the system has the type `uintptr_t'. */
@@ -272,20 +278,20 @@
 #cmakedefine01 HAVE_VPRINTF
 
 /* Define to 1 if you have the `_mm_free' function. */
-#cmakedefine HAVE__MM_FREE
+#cmakedefine01 HAVE__MM_FREE
 
 /* Define to 1 if you have the `_mm_malloc' function. */
-#cmakedefine HAVE__MM_MALLOC
+#cmakedefine01 HAVE__MM_MALLOC
 
 /* Define if you have the UNICOS _rtc() intrinsic. */
 #cmakedefine HAVE__RTC
 
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
    */
-#undef LT_OBJDIR
+#cmakedefine LT_OBJDIR
 
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
-#cmakedefine NO_MINUS_C_MINUS_O
+#cmakedefine01 NO_MINUS_C_MINUS_O
 
 /* Name of package */
 #cmakedefine PACKAGE "@PACKAGE@"
@@ -331,7 +337,7 @@
 #cmakedefine SIZEOF_LONG_LONG @SIZEOF_LONG_LONG@
 
 /* The size of `MPI_Fint', as computed by sizeof. */
-#cmakedefine SIZEOF_MPI_FINT
+#cmakedefine SIZEOF_MPI_FINT @SIZEOF_MPI_FINT@
 
 /* The size of `ptrdiff_t', as computed by sizeof. */
 #cmakedefine SIZEOF_PTRDIFF_T @SIZEOF_PTRDIFF_T@
@@ -380,7 +386,7 @@
 
 /* Use our own aligned malloc routine; mainly helpful for Windows systems
    lacking aligned allocation system-library routines. */
-#cmakedefine01 WITH_OUR_MALLOC
+#cmakedefine WITH_OUR_MALLOC
 
 /* Use low-precision timers, making planner very slow */
 #cmakedefine WITH_SLOW_TIMER
