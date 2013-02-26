@@ -38,10 +38,19 @@ foreach(prec ${precisions})
     execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${cfg_dir})
   endif()
   include(config.h.cmake)
+  if(MSVC)
+    set(lib_name libfftw${VER_MAJ}${pr}-${VER_MIN})
+  endif()
   if(LINK_WITH_EXTERN_LIB)
+    if(MSVC)
+      set(libname_search ${lib_name}.lib ${lib_name}-d.lib ${lib_name}-s.lib)
+      set(lib_name optimized ${lib_name}-s debug ${lib_name}-d)
+    else()
+      set(libname_search lib${lib_name}.a lib${lib_name}-d.a)
+      set(lib_name optimized ${lib_name} debug ${lib_name}-d)
+    endif()
     find_path(fftw${pr}_LIBDIR
-      NAMES
-        lib${lib_name}.a
+      NAMES ${libname_search}
       PATHS
         ~/src/sdlExtern/SunOS/lib
         ${externpro}/lib${NUMBITS}
@@ -52,9 +61,6 @@ foreach(prec ${precisions})
     endif()
     link_directories(${fftw${pr}_LIBDIR})
   else()
-    if(MSVC)
-      set(lib_name libfftw${VER_MAJ}${pr}-${VER_MIN})
-    endif()
     include(libfftw.cmake)
   endif()
   include(bench.cmake)
