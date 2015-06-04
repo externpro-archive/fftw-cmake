@@ -53,7 +53,7 @@ foreach(prec ${precisions})
       NAMES ${libname_search}
       PATHS
         ~/src/sdlExtern/SunOS/lib
-        ${externpro}/lib${NUMBITS}
+        ${externpro}/lib
       DOC "fftw${pr} library directory"
       )
     if(NOT fftw${pr}_LIBDIR)
@@ -69,4 +69,4 @@ if(GENERATE_CSCOPE)
   generate_cscope_db()
 endif()
 install(FILES ${fftwroot}/api/fftw3.h DESTINATION include/fftw${VER_MAJ})
-install(EXPORT ${PROJECT_NAME}-targets DESTINATION lib${NUMBITS}/cmake)
+install(EXPORT ${PROJECT_NAME}-targets DESTINATION lib/cmake)
