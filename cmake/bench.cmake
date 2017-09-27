@@ -1,7 +1,9 @@
 #######################################
 # executable dependencies and libraries
 list(APPEND ${exe_name}_deps ${lib_name})
-if(UNIX)
+include(CheckLibraryExists)
+check_library_exists(m sin "${CMAKE_LIBRARY_PATH}" HAVE_LIBM)
+if(HAVE_LIBM)
   list(APPEND ${exe_name}_deps m) # math library
 endif()
 #######################################
