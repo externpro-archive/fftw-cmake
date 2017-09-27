@@ -128,10 +128,11 @@ set_property(TARGET ${lib_name} PROPERTY COMPILE_DEFINITIONS
   LIBFFTWF33_EXPORTS
   )
 set_target_properties(${lib_name} PROPERTIES
+  OUTPUT_NAME ${lib_name}${ver}
   PREFIX "" # strip off the "lib" prefix, since it's already libfftw
   )
 set_property(TARGET ${lib_name} PROPERTY FOLDER "libfftw")
-install(TARGETS ${lib_name} EXPORT ${PROJECT_NAME}-targets
+install(TARGETS ${lib_name} EXPORT ${targetsFile}
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
