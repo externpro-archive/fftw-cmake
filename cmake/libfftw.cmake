@@ -110,14 +110,14 @@ list(APPEND ${lib_name}_libsrcs ${threads_srcs} ${threads_hdrs})
 #######################################
 # library
 add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
-set_property(TARGET ${lib_name} PROPERTY INCLUDE_DIRECTORIES
-  ${cfg_dir}
-  ${fftwroot}/api
-  ${fftwroot}/dft
+target_include_directories(${lib_name} PUBLIC $<BUILD_INTERFACE:${cfg_dir}>
+  $<BUILD_INTERFACE:${fftwroot}/api>
+  $<BUILD_INTERFACE:${fftwroot}/dft>
+  $<BUILD_INTERFACE:${fftwroot}/kernel>
+  $<BUILD_INTERFACE:${fftwroot}/rdft>
+  PRIVATE
   ${fftwroot}/dft/scalar
   ${fftwroot}/dft/simd
-  ${fftwroot}/kernel
-  ${fftwroot}/rdft
   ${fftwroot}/rdft/scalar
   ${fftwroot}/rdft/simd
   ${fftwroot}/reodft

@@ -31,15 +31,7 @@ list(APPEND ${exe_name}_srcs ${libbench2_srcs} ${libbench2_hdrs})
 #######################################
 # executable
 add_executable(${exe_name} ${${exe_name}_srcs})
-add_dependencies(${exe_name} ${${exe_name}_deps})
 target_link_libraries(${exe_name} ${${exe_name}_deps})
-set_property(TARGET ${exe_name} PROPERTY INCLUDE_DIRECTORIES
-  ${cfg_dir}
-  ${fftwroot}/api
-  ${fftwroot}/dft
-  ${fftwroot}/kernel
-  ${fftwroot}/rdft
-  ${fftwroot}/libbench2
-  )
+target_include_directories(${exe_name} PRIVATE ${fftwroot}/libbench2)
 set_property(TARGET ${exe_name} PROPERTY FOLDER "bench")
 master_src_list_append(${CMAKE_CURRENT_SOURCE_DIR} "${${exe_name}_srcs}")
