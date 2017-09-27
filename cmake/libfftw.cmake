@@ -127,6 +127,9 @@ set_property(TARGET ${lib_name} PROPERTY INCLUDE_DIRECTORIES
 set_property(TARGET ${lib_name} PROPERTY COMPILE_DEFINITIONS
   LIBFFTWF33_EXPORTS
   )
+set_target_properties(${lib_name} PROPERTIES
+  PREFIX "" # strip off the "lib" prefix, since it's already libfftw
+  )
 set_property(TARGET ${lib_name} PROPERTY FOLDER "libfftw")
 install(TARGETS ${lib_name} EXPORT ${PROJECT_NAME}-targets
   RUNTIME DESTINATION bin
