@@ -5,8 +5,6 @@ set(VER_PT 3)
 set(fftwroot ${fftw_SOURCE_DIR})
 get_filename_component(fftwroot ${fftwroot} ABSOLUTE)
 include(macros.cmake)
-option(LINK_WITH_EXTERN_LIB "link with extern fftw lib" OFF)
-set(externpro ${CMAKE_INSTALL_PREFIX})
 if(MSVC)
   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
   add_definitions(/Oi) # enable intrinsic functions
@@ -41,28 +39,7 @@ foreach(prec ${precisions})
   if(MSVC)
     set(lib_name libfftw${VER_MAJ}${pr}-${VER_MIN})
   endif()
-  if(LINK_WITH_EXTERN_LIB)
-    if(MSVC)
-      set(libname_search ${lib_name}.lib ${lib_name}-d.lib ${lib_name}-s.lib)
-      set(lib_name optimized ${lib_name}-s debug ${lib_name}-d)
-    else()
-      set(libname_search lib${lib_name}.a lib${lib_name}-d.a)
-      set(lib_name optimized ${lib_name} debug ${lib_name}-d)
-    endif()
-    find_path(fftw${pr}_LIBDIR
-      NAMES ${libname_search}
-      PATHS
-        ~/src/sdlExtern/SunOS/lib
-        ${externpro}/lib
-      DOC "fftw${pr} library directory"
-      )
-    if(NOT fftw${pr}_LIBDIR)
-      message(FATAL_ERROR "fftw${pr} lib not found")
-    endif()
-    link_directories(${fftw${pr}_LIBDIR})
-  else()
-    include(libfftw.cmake)
-  endif()
+  include(libfftw.cmake)
   include(bench.cmake)
 endforeach()
 if(GENERATE_CSCOPE)
